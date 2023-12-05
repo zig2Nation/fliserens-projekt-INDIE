@@ -8,12 +8,15 @@ main{
     padding: 2em;
     border: solid;
 }
+
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 header{
+    padding-top: 1em;
+    height: 8em;
     width: 84.5%;
     background-color: rgb(77, 158, 77);
     position:sticky;
@@ -22,7 +25,7 @@ header{
     border-bottom: solid black;
 }
 nav{
-    margin-top: 3em;
+    margin-top: 2em;
 }
 h1{
     display: flex;
@@ -31,9 +34,13 @@ h1{
 li{
     list-style-type: none;
 }
+ul li:hover{
+    border-bottom: 1px solid black;
+}
 ul{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 a{
     color: black;
@@ -41,36 +48,48 @@ a{
 }
 footer{
     display: flex;
-    margin-top: 2em;
     background-color: green;
     justify-content: space-evenly;
     color: white;
     width: 84.5%;
 }
-#logo{
-    margin-top: -2em;
+.logo{
+    
     margin-left: 1em;
     width: 7em;
 }
+.menu{
+    height: 3em;
+    cursor: pointer;
+}
+
 p{
     font-size: 1.2em;
+}
+/*salg*/
+#kurvContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
 }
 .salg{
     background-color: white;
     margin-top: 5em;
     display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 30em;
 }
 .salgImg{
     width: 10em;
     
 }
-#salgContainer{
-    font-size: large;
-}
+
 button{
     text-align: center;
     width: 20em;
     height: 5em;
+    cursor: pointer;
 }
 
 .indkøbsvogn{
@@ -85,12 +104,49 @@ button{
 
 
 
+/*forside*/
+#container{
+    height: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-
-
-
-
+#slideshowImg{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: center;
+}
+.frontTekst{
+    display: flex;
+    align-items: center;
+    border-bottom: solid green;
+    margin-top: 2em;
+    font-weight: bolder;
+    width: 50%;
+}
+.tekstFront h2{
+    padding-right: 13em;
+    margin-top: 4em;
+    font-size: large;
+    border-bottom: solid green;
+}
+.tekstFront{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.tekstFront p{
+    margin-top: 2em;
+    margin-left: 2em;
+}
+.tekstFront a{
+    text-decoration: underline;
+    color: grey;
+}
+.tekstFront p{
+    background-color: white;
+}
 
 
 
@@ -132,7 +188,7 @@ h3{
 }
 .rabatTop{
     background-color: white;
-    width: 35em;
+    width: 40em;
     border-bottom: solid green;
     margin-top: 2em;
     margin-left: 2em;
@@ -140,12 +196,12 @@ h3{
 #rabatText{
     display: flex;
     background-color: white;
-    margin-left: 2em;
+    padding-left: 1em;
     margin-top: 2em;
 }
 #Uden{
     background-color: white;
-    margin-left: 2em;
+    padding-left: 1em;
     margin-top: 4em;
     display: flex;
 }
@@ -153,6 +209,7 @@ h3{
     background-color: white;
     display: flex;
     margin-top: 4em;
+    padding-left: 1em;
 }
 .rentVand{
     margin-left: 8em;
@@ -179,6 +236,11 @@ h3{
     height: 5em;
     width: 15em;
     margin-top: 2em;
+    margin-bottom: 1em;
+    transition: transform 0.3s ease;
+}
+.Bestil:hover{
+    transform: scale(1.1);
 }
 
 
@@ -199,15 +261,14 @@ h3{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-top: 3em;
     background-color: white;
     height: 8em;
     position: relative;
         
 }
-.kontorTekst,h2{
-    margin-right: 4.2em;
-}
+
 .tilbud{
     color: white;
     background-color: green;
@@ -215,9 +276,13 @@ h3{
     border-bottom: solid black;
     display: flex;
     align-items: center;
-    
     margin-top: 2em;
     
+    
+}
+.kontorIndledning{
+    padding-left: 6em;
+    width: 50%;
 }
 .support{
     width: 10em;
@@ -248,3 +313,288 @@ form textarea {
 	box-sizing: border-box;
 }
 
+
+
+
+
+
+
+
+/*konakt os*/
+.kontor{
+    width: 20em;
+    height: 20em;
+}
+.kontorDamer{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+}
+.kontorTekst{
+    margin-left: 2em;
+    width: 50%;
+}
+.kontorDamer img{
+    width: 30em;
+    height: 20em;
+}
+
+
+
+.fliserenserTeam{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    background-color: white;
+    margin-top: 2em;
+
+}
+.tekst-gutterne{
+    margin-left: 2em;
+    width: 50%;
+    
+}
+.fliserenserTeam img{
+    width: 40em;
+    height: 20em;
+    
+}
+#god{
+    color: white;
+    margin-top: 2em;
+    background-color: rgb(77, 158, 77);
+}
+.godkendelse{
+    color: white;
+    background-color: rgb(77, 158, 77);
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+billeder
+kurv
+localstorege
+sponser
+sammarbejdsfirma
+
+*/
+
+
+/*burger menu*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    padding: 3em;
+
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.dropdown-content ul h3:hover{
+    border-bottom: 1px solid black;
+}
+.logoContainer{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*inkøbskurv*/
+
+#indkøbsContainer {
+    display: flex;
+}
+
+#indkøbsProdukter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.indkøbs-produkt {
+    background-color: white;
+    margin-top: 2em;
+    width: 40%;
+    border-bottom: solid green;
+}
+
+#indkøbsProdukter img {
+    width: 5em;
+}
+
+#samletPris {
+    margin-top: 2em;
+    position: fixed;
+    right: 9em;
+    z-index: 1;
+}
+#tømKurv{
+    color: white;
+    background-color: green;
+    width: 11em;
+    margin-top: 4em;
+    position: fixed;
+    right: 11em;
+    z-index: 1;
+}
+.indkøbs-quantity{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+
+
+
+
+.samarbejde{
+    border-bottom: solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+#slide{
+    object-fit: fill;
+    width: 10em;
+    height: 10em;
+}
+.samarbejdeImg {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease-in-out; /* Tilføj en fade-overgang på 0.5 sekunder */
+}
+
+.samarbejdeImg.hidden {
+    opacity: 0;
+}
+.Lorem{
+    background-color: white;
+}
+.erfaring{
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: solid green;
+}
+.erfaring article{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.tekstFrontTo{
+    padding-left: 50em;
+    margin-top: 4em;
+    background-color: white;
+    border-bottom: solid green;
+}
+#tekstFrontTo{
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+#tekstFrontTo p{
+    background-color: white;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+
+
+
+
+/*facaderens*/
+#facadeBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facadeImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(39, 33, 33, 0.5); /* Juster dette for at ændre farven og gennemsigtigheden */
+}
+
+.overlayTextTop {
+    color: white;
+    
+}
+.overlayText{
+    color: white;
+    font-size: x-large;
+}
+#overlayBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#facade1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+#facade1 img{
+    height: 15em;
+}
+.sådan{
+    display: flex;
+    justify-content: space-evenly;
+}
+.sådan h2{
+    border-bottom: solid green;
+}

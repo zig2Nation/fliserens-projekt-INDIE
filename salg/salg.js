@@ -1,78 +1,297 @@
 const products = [
-    {
-        description: "Højeffektivt rensemiddel til fjernelse af snavs og misfarvninger på fliser, beton og sten. Koncentrat, blandes op med vand 1:2. Til udendørs brug. Fare. Forårsager hudirritation (H315). Forårsager alvorlig øjenskade (H319).",
-        price: 300,
-        image: "../item1.jpg"
-    },
-    {
-        description: "IBF Fliserens er et rengøringsmiddel baseret på biologisk nedbrydelige kationiske overfladeaktive stoffer. Produktet virker kemisk rensende og er velegnet til at fjerne smuds, snavs og fedt fra hårde overflader, såsom tagsten, fliser og belægningssten.",
-        price: 200,
-        image: "../item2.webp"
-    },
-    {
-        description: "Befa fliserens er en stærk alkalisk fliserens. Til udendørsbrug som grundrengøring før evt. imprægnering. Løsner effektivt skidt, snavs og lavsvampe fra betonfliser. Biologisk nedbrydeligt.",
-        price: 150,
-        image: "../item3.png"
-    },
-    {
-        description: "Her får du en praktisk højtryksrenser, som fungerer hvor som helst, og den kan både stå op eller ligge ned, som den eneste på markedet. Den er let at transportere og opbevare, og det er gennemtænkt i forhold til opbevaring.",
-        price: 6700,
-        image: "../item4.jpg"
-    },
-    {
-        description: "Rengør fliser, gangarealer, indkørsler, gulve mv. Monteret med HONDA motor og højtrykspumpe, som yder 150 bar. Iforhold til fliserensning med almindelig højtryksrenser er EASY CLEAN 5 gange mere effektiv. Nem foldehåndtag, så den ikke fylder meget i bilen. Tilkøb: højtryksrenser pistolgreb samt sandblæsningsudstyr (ej lagervare).",
-        price: 30000,
-        image: "../item5.jpg"
-    }
-    // Tilføj andre produkter her
+  {
+    description: "Højeffektivt rensemiddel til fjernelse af snavs og misfarvninger på fliser, beton og sten. Koncentrat, blandes op med vand 1:2. Til udendørs brug. Fare. Forårsager hudirritation (H315). Forårsager alvorlig øjenskade (H319).",
+    price: 300,
+    image: "../item1.jpg"
+  },
+  {
+    description: "IBF Fliserens er et rengøringsmiddel baseret på biologisk nedbrydelige kationiske overfladeaktive stoffer. Produktet virker kemisk rensende og er velegnet til at fjerne smuds, snavs og fedt fra hårde overflader, såsom tagsten, fliser og belægningssten.",
+    price: 200,
+    image: "../item2.webp"
+  },
+  {
+    description: "Befa fliserens er en stærk alkalisk fliserens. Til udendørsbrug som grundrengøring før evt. imprægnering. Løsner effektivt skidt, snavs og lavsvampe fra betonfliser. Biologisk nedbrydeligt.",
+    price: 150,
+    image: "../item3.png"
+  },
+  {
+    description: "Her får du en praktisk højtryksrenser, som fungerer hvor som helst, og den kan både stå op eller ligge ned, som den eneste på markedet. Den er let at transportere og opbevare, og det er gennemtænkt i forhold til opbevaring.",
+    price: 6700,
+    image: "../item4.jpg"
+  },
+  {
+    description: "Rengør fliser, gangarealer, indkørsler, gulve mv. Monteret med HONDA motor og højtrykspumpe, som yder 150 bar. Iforhold til fliserensning med almindelig højtryksrenser er EASY CLEAN 5 gange mere effektiv. Nem foldehåndtag, så den ikke fylder meget i bilen. Tilkøb: højtryksrenser pistolgreb samt sandblæsningsudstyr (ej lagervare).",
+    price: 30000,
+    image: "../item5.jpg"
+  }
+  // Tilføj andre produkter her
 ];
 
-// Opret variabel til salgContainer
-const salgContainer = document.getElementById("salgContainer");
 
-// Opret variabel til indkøbsvognikon
-const kurvContainer = document.querySelector(".indkøbsvogn");
-const kurvAntalElement = document.getElementById("cartCount");
-let kurvAntal = 0;
 
-// Fjern eksisterende salgselementer fra salgContainer
-salgContainer.innerHTML = '';
 
-// Loop gennem produkter og tilføj dem til salgContainer
-products.forEach(product => {
-    const salgElement = document.createElement("div");
-    salgElement.classList.add("salg");
+
+
+const kurvContainer = document.getElementById("kurvContainer");
+
+function opretSalgElement(product) {
+  const salgElement = document.createElement("div");
+  salgElement.classList.add("salg");
+
+  const descriptionElement = document.createElement("div");
+  descriptionElement.classList.add("salg-description");
+  descriptionElement.innerHTML = `<p>${product.description}</p>`;
+
+  const buttonElement = document.createElement("button");
+  buttonElement.textContent = "Læg i kurv";
+  buttonElement.addEventListener("click", () => handleLægIKurv(product));
+
+  const priceElement = document.createElement("div");
+  priceElement.classList.add("salg-price");
+  priceElement.innerHTML = `<p>Pris: ${product.price}kr</p>`;
+
+  const imageElement = document.createElement("img");
+  imageElement.classList.add("salgImg");
+  imageElement.src = product.image;
+  imageElement.alt = "";
+
+  salgElement.appendChild(descriptionElement);
+  salgElement.appendChild(buttonElement);
+  salgElement.appendChild(priceElement);
+  salgElement.appendChild(imageElement);
+
+  return salgElement;
+}
+
+
+
+
+
+
+
+
+
+function handleLægIKurv(product) {
+  // Hent kurv fra localStorage
+  let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
+
+  // Tilføj det valgte produkt til kurven
+  kurv.push(product);
+
+  // Opdater localStorage med den opdaterede kurv
+  localStorage.setItem("kurv", JSON.stringify(kurv));
+
+  // Opdater kurvCount
+  opdaterKurvCount();
+
+  console.log("Produkt tilføjet til kurv:", product);
+}
+
+
+
+
+
+
+
+
+
+function opdaterKurvCount() {
+  // Hent kurv fra localStorage
+  let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
+
+  // Opdater kurvCount i DOM'en
+  const cartCountElement = document.getElementById("cartCount");
+  cartCountElement.textContent = kurv.length.toString();
+}
+
+// Initialiser
+window.addEventListener("DOMContentLoaded", (event) => {
+  // Hent eksisterende kurv fra localStorage og opdater kurvCount
+  opdaterKurvCount();
+
+  products.forEach((product) => {
+    const salgElement = opretSalgElement(product);
+    kurvContainer.appendChild(salgElement);
+  });
+});
+
+
+
+
+
+
+
+
+let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
+const indkøbsProdukterContainer = document.getElementById("indkøbsProdukter");
+const samletPrisContainer = document.getElementById("samletPris");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function visIndkøbsProdukter() {
+  indkøbsProdukterContainer.innerHTML = "";
+  let samletPris = 0;
+
+  // Opret et objekt til at holde styr på antallet af hvert produkt
+  const produktMængder = {};
+
+  kurv.forEach((product) => {
+    // Brug produktets index som nøgle
+    const key = products.findIndex((p) => p.description === product.description);
+
+    if (produktMængder[key] !== undefined) {
+      // Opdater mængden, hvis produktet allerede eksisterer
+      produktMængder[key].quantity++;
+    } else {
+      // Opret en ny post i produktMængder, hvis produktet ikke eksisterer
+      produktMængder[key] = {
+        product,
+        quantity: 1
+      };
+    }
+
+    samletPris += product.price;
+  });
+
+
+
+
+
+
+
+
+
+
+  // Gennemgå produktMængder for at opdatere indkøbskurven
+  for (const key in produktMængder) {
+    const item = produktMængder[key];
+    const product = products[key];
+
+    const indkøbsProduktElement = document.createElement("div");
+    indkøbsProduktElement.classList.add("indkøbs-produkt");
 
     const descriptionElement = document.createElement("div");
-    descriptionElement.classList.add("salg-description");
+    descriptionElement.classList.add("indkøbs-description");
     descriptionElement.innerHTML = `<p>${product.description}</p>`;
 
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = "Læg i kurv";
-    buttonElement.addEventListener("click", () => {
-        kurvAntal++;
-        kurvAntalElement.textContent = kurvAntal;
-        // Her kan du tilføje yderligere logik, hvis nødvendigt
-    });
-
     const priceElement = document.createElement("div");
-    priceElement.classList.add("salg-price");
+    priceElement.classList.add("indkøbs-price");
     priceElement.innerHTML = `<p>Pris: ${product.price}kr</p>`;
 
+    // Vis mængden ved siden af beskrivelsen
+    const quantityElement = document.createElement("div");
+    quantityElement.classList.add("indkøbs-quantity");
+    quantityElement.innerHTML = `<p>Mængde: ${item.quantity}</p>`;
+
+    // Tilføj knap til at øge mængden
+    const increaseQuantityButton = document.createElement("button");
+    increaseQuantityButton.textContent = "+";
+    increaseQuantityButton.addEventListener("click", () => {
+      justerMængde(product.description, 1);
+      visIndkøbsProdukter(); // Opdater visningen efter ændring i mængden
+    });
+
+    // Tilføj knap til at formindske mængden (ekstra funktionalitet)
+    const decreaseQuantityButton = document.createElement("button");
+    decreaseQuantityButton.textContent = "-";
+    decreaseQuantityButton.addEventListener("click", () => {
+      justerMængde(product.description, -1);
+      visIndkøbsProdukter(); // Opdater visningen efter ændring i mængden
+    });
+
     const imageElement = document.createElement("img");
-    imageElement.classList.add("salgImg");
+    imageElement.classList.add("indkøbsImg");
     imageElement.src = product.image;
     imageElement.alt = "";
 
-    salgElement.appendChild(descriptionElement);
-    salgElement.appendChild(buttonElement);
-    salgElement.appendChild(priceElement);
-    salgElement.appendChild(imageElement);
+    indkøbsProduktElement.appendChild(descriptionElement);
+    indkøbsProduktElement.appendChild(priceElement);
+    indkøbsProduktElement.appendChild(quantityElement);
+    indkøbsProduktElement.appendChild(increaseQuantityButton);
+    indkøbsProduktElement.appendChild(decreaseQuantityButton);
+    indkøbsProduktElement.appendChild(imageElement);
 
-    salgContainer.appendChild(salgElement);
-});
+    indkøbsProdukterContainer.appendChild(indkøbsProduktElement);
+  }
 
-// Tilføj eventlistener til indkøbsvognikon
-kurvContainer.addEventListener("click", () => {
-    // Her kan du tilføje logik for at vise indkøbskurven
+  samletPrisContainer.innerHTML = `<p>Samlet pris: ${samletPris}kr</p>`;
+}
+
+// Initial visning af indkøbsprodukter
+visIndkøbsProdukter();
+
+
+/**
+ * 
+ * @param {string} description 
+ * @param {number} ændring
+ * @description tal i kurv
+ */
+function justerMængde(description, ændring) {
+  // Hent kurv fra localStorage
+  let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
+
+  // Find det produkt, der skal justeres i mængde
+  const produktIndex = kurv.findIndex((product) => product.description === description);
+
+  if (produktIndex !== -1) {
+    // Opdater mængden
+    kurv[produktIndex].quantity += ændring;
+
+    // Hvis mængden er nul eller negativ, fjern produktet fra kurven
+    if (kurv[produktIndex].quantity <= 0) {
+      kurv.splice(produktIndex, 1);
+    }
+
+    // Opdater localStorage med den opdaterede kurv
+    localStorage.setItem("kurv", JSON.stringify(kurv));
+
+    // Opdater kurvCount
+    opdaterKurvCount();
+
+    // Opdater visningen af indkøbskurven med det samme
+    visIndkøbsProdukter();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const tømKurv = document.getElementById("tømKurv");
+
+tømKurv.addEventListener("click", () => {
+  // Fjern alle produkter fra kurven
+  localStorage.removeItem("kurv");
+
+  // Nulstil kurv og opdater kurvCount
+  kurv = [];
+  opdaterKurvCount();
+
+  // Opdater visningen af indkøbskurven med det samme
+  visIndkøbsProdukter();
 });

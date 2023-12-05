@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>salg af udstyr</title>
+    <title>indkøbskurv</title>
     <link rel="stylesheet" href="../style.css">
-    <script defer src="salg.js"></script>
+    <script defer src="../salg/salg.js"></script>
 </head>
 <header>
     <h1>L/S Fliserens</h1>
@@ -20,8 +20,9 @@
                             </ul>
                         </div>
                     </li>
-                    <a href="../index.html"><img class="logo" src="../dansk fliserens.png" alt=""></a>
+                    <a href="index.html"><img class="logo" src="../dansk fliserens.png" alt=""></a>
                     </div>
+
                 <li><a href="../index.html">FORSIDE</a></li>
 
                 <li><a href="../fliserens/fliserens.html">FLISERENS</a></li>
@@ -33,7 +34,7 @@
                 <li><a href="../kontakt/kontakt.html">KONTAKT/OM OS</a></li>
 
                 <div class="indkøbsvogn">
-                    <a href="../indkøbskurv/indkøbskurv.html"><img id="cartIcon" src="../icons8-shopping-cart-24.png" alt=""></a>
+                    <img id="cartIcon" src="../icons8-shopping-cart-24.png" alt="">
                     <span id="cartCount">0</span>
                 </div>
             </ul>
@@ -41,14 +42,14 @@
 </header>
 <body>
     <main>
-        <h2>Se vores udstyr til salg</h2>
-        <div id="kurvContainer"></div>
+        
+        <h1>velkommen til din indkøbskurv</h1>
+        <div id="indkøbsContainer">
+            <div id="indkøbsProdukter"></div>
+            <div id="samletPris"></div>
+            <button id="tømKurv">Tøm kurv</button>
+        </div>
     </main>
-    <footer>
-        <h4>Direktør: Lasse</h4>
-        <h4>Email: lasse_strom@outlook.dk</h4>
-        <h4>Cvr: 1234</h4>
-        <h4>Nummer: 71704751</h4>
-    </footer>
+    
 </body>
 </html>
