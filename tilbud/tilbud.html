@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hent tilbud</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="../script.js"></script>
+</head>
+<header>
+    <h1>L/S Fliserens</h1>
+    <nav>
+            <ul>
+                <li><a href="index.html"><img id="logo" src="dansk fliserens.png" alt=""></a></li>
+
+                <li><a href="forside">FORSIDE</a></li>
+
+                <li><a href="../fliserens/fliserens.html">FLISERENS</a></li>
+
+                <li><a href="../salg/salg.html">SALG</a></li>
+
+                <li><a href="tilbud.html">HENT TILBUD</a></li>
+
+                <li><a href="">KONTAKT</a></li>
+                
+                <div class="indkøbsvogn">
+                    <img id="cartIcon" src="../icons8-shopping-cart-24.png" alt="">
+                    <span id="cartCount">0</span>
+                </div>
+            </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <div>
+            <article class="Nummer">
+                <p>Ring for tilbud, eller opmåling af dine flise på:</p>
+                <p>71704751</p>
+                <p>Eller lig en mail på:</p>
+                <p>lasse_strom@outlook.dk</p>
+            </article>
+        </div>
+        <article class="tilbud">
+            <img class="support" src="support-JA.png" alt="">
+        <div class="kontorTekst">
+            <h2>Lidt om kontoret</h2>
+            <p>Her hos os får du en uforpligtet pris på dit fliserens, med og uden algerens. hvis du ringer ind kommer du i kontakt med vores søde kontor dame dorthe som har været i firmaet de sidste 4år, det er os dorthe og jag som svare på jeres e-mails</p>
+        </div>
+        </article>
+
+
+        <form class="contactForm" novalidate>
+        </article>
+        <div>
+            <p><h3>Vi vil med glæde komme og rense dine fliser. Så udfyld dette skema og send ind til os og du får svar indefor 2-4 arbejdsdage, så vi kan aftale en plan</h3></p>
+        </div>
+            <label>
+                Navn
+                <input type="text" name="name" required>
+                <span class="statusMessage"></span>
+            </label>
+            <label>
+                E-mail
+                <input type="email" name="email" required maxlength="78" min="3">
+                <span class="statusMessage"></span>
+            </label>
+            <label>
+                Telefon
+                <input type="tel" name="phone" required>
+                <span class="statusMessage"></span>
+            </label>
+            <label>
+                Besked og hvor mange kvm
+                <textarea name="message" required minlength="15" maxlength="255"></textarea>
+                <span class="statusMessage"></span>
+            </label>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+</body>
+    <footer>
+        <h4>Direktør: Lasse</h4>
+        <h4>Email: lasse_strom@outlook.dk</h4>
+        <h4>Cvr: 1234</h4>
+        <h4>Nummer: 71704751</h4>
+    </footer>
+</html>

@@ -26,115 +26,94 @@ function opdaterBillede() {
 // Initial opkald for at starte billedslideshowet
 startBilledslideshow();
 
-const products = [
-    {
-        description: "Højeffektivt rensemiddel til fjernelse af snavs og misfarvninger på fliser, beton og sten. Koncentrat, blandes op med vand 1:2. Til udendørs brug. Fare. Forårsager hudirritation (H315). Forårsager alvorlig øjenskade (H319).",
-        price: 300,
-        image: "item1.jpg"
-    },
-    {
-        description: "IBF Fliserens er et rengøringsmiddel baseret på biologisk nedbrydelige kationiske overfladeaktive stoffer. Produktet virker kemisk rensende og er velegnet til at fjerne smuds, snavs og fedt fra hårde overflader, såsom tagsten, fliser og belægningssten.",
-        price: 200,
-        image: "item2.webp"
-    },
-    {
-        description: "Befa fliserens er en stærk alkalisk fliserens. Til udendørsbrug som grundrengøring før evt. imprægnering. Løsner effektivt skidt, snavs og lavsvampe fra betonfliser. Biologisk nedbrydeligt.",
-        price: 150,
-        image: "item3.png"
-    },
-    {
-        description: "Her får du en praktisk højtryksrenser, som fungerer hvor som helst, og den kan både stå op eller ligge ned, som den eneste på markedet. Den er let at transportere og opbevare, og det er gennemtænkt i forhold til opbevaring.",
-        price: 6700,
-        image: "item4.jpg"
-    },
-    {
-        description: "Rengør fliser, gangarealer, indkørsler, gulve mv. Monteret med HONDA motor og højtrykspumpe, som yder 150 bar. Iforhold til fliserensning med almindelig højtryksrenser er EASY CLEAN 5 gange mere effektiv. Nem foldehåndtag, så den ikke fylder meget i bilen. Tilkøb: højtryksrenser pistolgreb samt sandblæsningsudstyr (ej lagervare).",
-        price: 30000,
-        image: "item5.jpg"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const FORM = document.querySelector(".contactForm")
+console.log(FORM);
+let success
+
+
+FORM.addEventListener("submit", submitHandler)
+
+function submitHandler(event) {
+	event.preventDefault()
+    success = true
+
+	Array.from(event.target).forEach(validate)
+    if(success) {
+        event.target.submit()
     }
-    // Tilføj andre produkter her
-];
-
-// Opret variabel til salgContainer
-const salgContainer = document.getElementById("salgContainer");
-
-// Opret variabel til indkøbsvognikon
-const kurvContainer = document.querySelector(".indkøbsvogn");
-const kurvAntalElement = document.getElementById("cartCount");
-let kurvAntal = 0;
-
-// Fjern eksisterende salgselementer fra salgContainer
-salgContainer.innerHTML = '';
-
-// Loop gennem produkter og tilføj dem til salgContainer
-products.forEach(product => {
-    const salgElement = document.createElement("div");
-    salgElement.classList.add("salg");
-
-    const descriptionElement = document.createElement("div");
-    descriptionElement.classList.add("salg-description");
-    descriptionElement.innerHTML = `<p>${product.description}</p>`;
-
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = "Læg i kurv";
-    buttonElement.addEventListener("click", () => {
-        kurvAntal++;
-        kurvAntalElement.textContent = kurvAntal;
-        // Her kan du tilføje yderligere logik, hvis nødvendigt
-    });
-
-    const priceElement = document.createElement("div");
-    priceElement.classList.add("salg-price");
-    priceElement.innerHTML = `<p>Pris: ${product.price}kr</p>`;
-
-    const imageElement = document.createElement("img");
-    imageElement.classList.add("salgImg");
-    imageElement.src = product.image;
-    imageElement.alt = "";
-
-    salgElement.appendChild(descriptionElement);
-    salgElement.appendChild(buttonElement);
-    salgElement.appendChild(priceElement);
-    salgElement.appendChild(imageElement);
-
-    salgContainer.appendChild(salgElement);
-});
-
-// Tilføj eventlistener til indkøbsvognikon
-kurvContainer.addEventListener("click", () => {
-    // Her kan du tilføje logik for at vise indkøbskurven
-});
-
-
-
-
-
-
-
-
-
-
-const cartDropdown = document.getElementById("cartDropdown");
-const cartItemList = document.getElementById("cartItemList");
-
-// Funktion til at vise eller skjule dropdown'en
-function toggleCartDropdown() {
-    cartDropdown.classList.toggle("show");
 }
 
-// Lyt efter klik på indkøbskurv-containeren
-const cartContainer = document.getElementById("cartContainer");
-cartContainer.addEventListener("click", toggleCartDropdown);
 
-// Opdater indkøbskurv-dropdown'en
-function updateCartDropdown() {
-    // Fjern eksisterende elementer i dropdown
-    cartItemList.innerHTML = '';
-  
-    // Tilføj hvert element i indkøbskurven til dropdown'en
-    for (const product of kurv) {
-        const listItem = document.createElement("li");
-        listItem.textContent = product.description;
-        cartItemList.appendChild(listItem);
+function validate(field) {
+	if (field.nodeName === "BUTTON") return // guard clause
+
+	field.nextElementSibling.textContent = ""
+
+	if (field.required && !field.value) {
+		field.nextElementSibling.textContent = "Feltet må ikke være tomt!"
+        success = false
+	}
+
+	if (field.type === "text" && !field.value) {
+		// input fejl
+		field.nextElementSibling.textContent = "Skriv dit navn!"
+        success = false
+	}
+
+	if (field.type === "email") {
+		// gør noget her
+		const indexOfAt = field.value.indexOf("@")
+		const indexOfDot = field.value.indexOf(".")
+
+		if (indexOfAt === -1
+				|| indexOfAt === 0
+				|| indexOfAt === field.value.length - 1
+				|| indexOfDot === -1
+				|| indexOfDot === 0
+				|| indexOfDot === field.value.length - 1
+				|| indexOfDot < indexOfAt
+				|| indexOfAt === indexOfDot - 1) {
+			field.nextElementSibling.textContent = "Du skal skrive en korrekt email adresse din nar!"
+            success = false
+		}
+	}
+
+    if(field.type === "tel"){
+
+        if(field.value.length < field.minlength
+            || field.value.length > field.maxlength
+            || isNaN(field.value)){
+            field.nextElementSibling.textContent = "du skal bruge tal og max 8 tal"
+            success = false
+        }
     }
+    if (field.nodeName === "TEXTAREA") {
+        if (field.value.length < 15
+            ||field.value.length > 255) {
+                field.nextElementSibling.textContent = "besked max 255 ord min 15"
+                success = false
+            }
+    }
+
 }
