@@ -129,7 +129,6 @@ function gemFormularData() {
         besked: FORM.querySelector('textarea[name="message"]').value,
     };
 
-    // Gemmer objektet som en streng i localStorage
     localStorage.setItem("formData", JSON.stringify(formData));
     
     // Viser en succesbesked når formularen er sendt

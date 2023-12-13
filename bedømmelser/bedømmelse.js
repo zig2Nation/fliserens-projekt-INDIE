@@ -13,11 +13,11 @@ function submitHandler(event) {
 }
 
 function validate(field) {
-  if (field.nodeName === "BUTTON") return; // guard clause
+  if (field.nodeName === "BUTTON") return;
 
-  const label = field.closest("label"); // find det overordnede label-element
+  const label = field.closest("label");
 
-  label.style.border = ""; // nulstil grænsestil
+  label.style.border = "";
 
   field.nextElementSibling.textContent = "";
 
@@ -212,14 +212,14 @@ document.querySelector('.beskeder').addEventListener('submit', function (event) 
             besked: document.querySelector('textarea[name="message"]').value
         });
 
-        // Gem den opdaterede liste i localStorage
+        
         localStorage.setItem('vurderinger', JSON.stringify(gemteVurderinger));
 
-        // Tøm indholdet af tekstSlide
+        
         const tekstSlide = document.getElementById('tekstSlide');
         tekstSlide.innerHTML = '';
 
-        // Opdater visningen i slideshow
+        
         visGemteVurderingerISlideshow(gemteVurderinger);
 
         console.log('Formular sendt. Data gemt i localStorage.');
@@ -236,24 +236,23 @@ document.querySelector('.beskeder').addEventListener('submit', function (event) 
 function visGemteVurderingerISlideshow(gemteVurderinger) {
     const tekstSlide = document.getElementById('tekstSlide');
 
-    // Fjern alle eksisterende slides
     tekstSlide.innerHTML = '';
 
-    // Hent antallet af viste vurderinger fra localStorage
+    
     let visteVurderinger = parseInt(localStorage.getItem('visteVurderinger')) || 0;
 
-    // Hvis der er flere vurderinger, der ikke er blevet vist endnu
+    
     if (visteVurderinger < gemteVurderinger.length) {
-        // Vis den næste vurdering
+        
         const nyVurdering = document.createElement('div');
         const stjernerHTML = Array.from({ length: parseInt(gemteVurderinger[visteVurderinger].stjerner) }, (_, index) => '&#9733;').join('');
         nyVurdering.innerHTML = `<p>Brugerens vurdering: ${stjernerHTML}</p><p>Besked: ${gemteVurderinger[visteVurderinger].besked}</p>`;
         tekstSlide.appendChild(nyVurdering);
 
-        // Opdater antallet af viste vurderinger
+        
         localStorage.setItem('visteVurderinger', (visteVurderinger + 1).toString());
     } else {
-        // Hvis alle vurderinger er blevet vist, nulstil tælleren
+        
         localStorage.removeItem('visteVurderinger');
     }
 }
@@ -261,7 +260,7 @@ function submitHandler(event) {
     event.preventDefault();
     success = true;
 
-    // Nulstil tælleren for viste vurderinger
+    
     localStorage.removeItem('visteVurderinger');
 
     Array.from(event.target).forEach(validate);
@@ -281,21 +280,21 @@ document.querySelector(".tilHøjrePil").addEventListener('click', visNæsteVurde
 
 
 function visNæsteVurdering() {
-    // Hent eksisterende vurderinger fra localStorage
+    
     const gemteVurderinger = JSON.parse(localStorage.getItem('vurderinger')) || [];
 
-    // Hent antallet af viste vurderinger fra localStorage
+    
     let visteVurderinger = parseInt(localStorage.getItem('visteVurderinger')) || 0;
 
-    // Hvis der er flere vurderinger, der ikke er blevet vist endnu
+    
     if (visteVurderinger < gemteVurderinger.length) {
-        // Opdater visningen i slideshow
+        
         visGemteVurderingerISlideshow(gemteVurderinger, visteVurderinger);
 
-        // Opdater antallet af viste vurderinger
+        
         localStorage.setItem('visteVurderinger', (visteVurderinger + 1).toString());
     }
-    // Du kan tilføje en besked eller ændre visningen, hvis der ikke er flere vurderinger at vise
+    
 }
 
 
@@ -307,13 +306,13 @@ function visForrigeVurdering() {
     if (visteVurderinger > 0) {
         visteVurderinger--;
 
-        // Hent eksisterende vurderinger fra localStorage
+       
         const gemteVurderinger = JSON.parse(localStorage.getItem('vurderinger')) || [];
 
-        // Opdater visningen i slideshow
+        
         visGemteVurderingerISlideshow(gemteVurderinger, visteVurderinger);
 
-        // Opdater antallet af viste vurderinger
+        
         localStorage.setItem("visteVurderinger", visteVurderinger.toString());
     } else {
         localStorage.removeItem("visteVurderinger");
@@ -323,15 +322,15 @@ function visForrigeVurdering() {
 function visGemteVurderingerISlideshow(gemteVurderinger, visteVurderinger) {
     const tekstSlide = document.getElementById("tekstSlide");
 
-    // Fjern alle eksisterende slides
+    
     tekstSlide.innerHTML = '';
 
-    // Hvis der er flere vurderinger, der ikke er blevet vist endnu
+    
     if (visteVurderinger >= 0 && visteVurderinger < gemteVurderinger.length) {
-        // Vis den næste vurdering
+        
         const nyVurdering = document.createElement('div');
         const stjernerHTML = Array.from({ length: parseInt(gemteVurderinger[visteVurderinger].stjerner) }, (_, index) => '&#9733;').join('');
-        nyVurdering.innerHTML = `<p>Brugerens vurdering: ${stjernerHTML}</p><p>Besked: ${gemteVurderinger[visteVurderinger].besked}</p>`;
+        nyVurdering.innerHTML = `<p>Brugerens vurdering: ${stjernerHTML}</p><p> ${gemteVurderinger[visteVurderinger].besked}</p>`;
         tekstSlide.appendChild(nyVurdering);
     }
 }

@@ -18,7 +18,7 @@ header{
     padding-top: 1em;
     height: 8em;
     width: 84.5%;
-    background-color: rgb(77, 158, 77);
+    background-color: #2BB673;
     position:sticky;
     top: 0;
     z-index: 1;
@@ -48,7 +48,7 @@ a{
 }
 footer{
     display: flex;
-    background-color: green;
+    background-color: #2BB673;
     justify-content: space-evenly;
     color: white;
     width: 84.5%;
@@ -128,7 +128,7 @@ button {
 .frontTekst{
     display: flex;
     align-items: center;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
     background-color: white;
     margin-top: 2em;
     font-weight: bolder;
@@ -138,7 +138,7 @@ button {
     padding-right: 13em;
     margin-top: 4em;
     font-size: large;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
 }
 .tekstFront{
     display: flex;
@@ -197,13 +197,13 @@ h3{
 .h3Uden{
     margin-top: 2em;
     color: white;
-    background-color: green;
+    background-color: #2BB673;
     font-size: xx-large;
 }
 .rabatTop{
     background-color: white;
     width: 40em;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
     margin-top: 2em;
 }
 .rabatTop h3{
@@ -260,7 +260,7 @@ h3{
 .Bestil{
     font-size: larger;
     color: white;
-    background-color: green;
+    background-color: #2BB673;
     height: 5em;
     width: 15em;
     margin-top: 2em;
@@ -301,7 +301,7 @@ h3{
 
 .tilbud{
     color: white;
-    background-color: green;
+    background-color: #2BB673;
     font-size: larger;
     border-bottom: solid black;
     display: flex;
@@ -398,11 +398,11 @@ form textarea {
 #god{
     color: white;
     margin-top: 2em;
-    background-color: rgb(77, 158, 77);
+    background-color: #2BB673;
 }
 .godkendelse{
     color: white;
-    background-color: rgb(77, 158, 77);
+    background-color: #2BB673;
     display: flex;
     align-items: center;
 }
@@ -496,7 +496,7 @@ sammarbejdsfirma
     background-color: white;
     margin-top: 2em;
     width: 40%;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
 }
 
 #indkøbsProdukter img {
@@ -511,7 +511,7 @@ sammarbejdsfirma
 }
 #tømKurv{
     color: white;
-    background-color: green;
+    background-color: #2BB673;
     width: 11em;
     margin-top: 4em;
     position: fixed;
@@ -554,7 +554,7 @@ sammarbejdsfirma
 .erfaring{
     display: flex;
     flex-direction: row-reverse;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
 }
 .erfaring article{
     display: flex;
@@ -564,7 +564,7 @@ sammarbejdsfirma
     padding-left: 50em;
     margin-top: 4em;
     background-color: white;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
     text-align: center;
 }
 #tekstFrontTo{
@@ -641,7 +641,7 @@ sammarbejdsfirma
 }
 .sådan h2{
     text-align: center;
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
     background-color: white;
     width: 50%;
 }
@@ -654,7 +654,7 @@ sammarbejdsfirma
 .sådanTekst h6{
     display: flex;
     justify-content: center;
-    color: green;
+    color: #2BB673;
     font-size: x-large;
 }
 .derfor {
@@ -678,7 +678,7 @@ sammarbejdsfirma
     margin-bottom: 1em;
 }
 .derfor h3{
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
 }
 .derfor h2{
     color: gray;

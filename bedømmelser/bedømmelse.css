@@ -18,7 +18,7 @@ header{
     padding-top: 1em;
     height: 8em;
     width: 84.5%;
-    background-color: rgb(77, 158, 77);
+    background-color: #2BB673;
     position:sticky;
     top: 0;
     z-index: 1;
@@ -48,7 +48,7 @@ a{
 }
 footer{
     display: flex;
-    background-color: green;
+    background-color: #2BB673;
     justify-content: space-evenly;
     color: white;
     width: 84.5%;
@@ -66,9 +66,7 @@ footer{
 p{
     font-size: 1.2em;
 }
-label p{
-    text-align: center;
-}
+
 button{
     margin-left: 20%;
     text-align: center;
@@ -81,7 +79,7 @@ button{
 
 
  h2{
-    border-bottom: solid green;
+    border-bottom: solid #2BB673;
     display: flex;
     justify-content: center;
 }
@@ -99,10 +97,17 @@ button{
     flex-direction: column;
     align-items: center;
 }
-
+.beskeder label p{
+    margin-bottom: 2em;
+    margin-left: 2.5em;
+}
 form, label {
     display: flex;
     flex-direction: column;
+    
+}
+#vurderKnap{
+    width: 7em;
 }
 
 form {
@@ -167,6 +172,7 @@ form textarea {
     text-align: center;
     background-color: white;
     margin-right: 2em;
+    padding: 1em 2em;
 }
 
 
@@ -186,23 +192,39 @@ form textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
-
-.tilHøjrePil{
-    margin-left: 32.8%;
-    width: 2em;
-    cursor: pointer;
+#tekstSlide div p{
+    word-break: break-all;
 }
-.tilVenstrePil{
-    
-    margin-right: 80%;
-    width: 2em;
-    cursor: pointer;
-    transform: rotate(180deg);
+#tekstSlide div{
+    width: 80%;
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #pilContainer{
-    width: 100em;
-    position: absolute;
+    width: 72.5%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 10em;
+    align-items: center;
+    margin-top: 4em;
+}
+#pilContainer h3{
+    font-size: 1.7em;
+    background-color: white;
+    padding: 1em 3em;
+    border-radius: 15px;
+}
+.tilHøjrePil{
+    height: 5em;
+    transform: rotate(180deg);
+}
+.tilVenstrePil{
+    height: 5em;
 }
 
 
