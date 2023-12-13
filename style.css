@@ -66,6 +66,8 @@ footer{
 p{
     font-size: 1.2em;
 }
+
+
 /*salg*/
 #kurvContainer{
     display: grid;
@@ -78,20 +80,25 @@ p{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
     height: 30em;
 }
 .salgImg{
-    width: 10em;
+   width: 10em;
+   height: 10em;
     
 }
-
-button{
+.salg-description{
     text-align: center;
-    width: 20em;
-    height: 5em;
+    margin-top: 2em;
+}
+button {
+    margin-top: 2em;
+    width: 100%;
+    max-width: 10em; /* Sæt en maksimal bredde for at forhindre overstrækning */
+    height: 3em;
     cursor: pointer;
 }
-
 .indkøbsvogn{
     cursor: pointer;
 }
@@ -106,14 +113,14 @@ button{
 
 /*forside*/
 #container{
-    height: 15em;
+    height: 25em;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #slideshowImg{
-    object-fit: cover;
+    object-fit: fill;
     width: 100%;
     height: 100%;
     position: center;
@@ -122,6 +129,7 @@ button{
     display: flex;
     align-items: center;
     border-bottom: solid green;
+    background-color: white;
     margin-top: 2em;
     font-weight: bolder;
     width: 50%;
@@ -139,13 +147,19 @@ button{
 .tekstFront p{
     margin-top: 2em;
     margin-left: 2em;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 .tekstFront a{
     text-decoration: underline;
     color: grey;
 }
-.tekstFront p{
-    background-color: white;
+.tekstFront img{
+    border-radius: 1em;
 }
 
 
@@ -191,13 +205,22 @@ h3{
     width: 40em;
     border-bottom: solid green;
     margin-top: 2em;
-    margin-left: 2em;
+}
+.rabatTop h3{
+    margin-left: 1em;
 }
 #rabatText{
     display: flex;
     background-color: white;
     padding-left: 1em;
     margin-top: 2em;
+}
+#rabatText p{
+    margin-top: 1em;
+    margin-left: 0,5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #Uden{
     background-color: white;
@@ -217,6 +240,9 @@ h3{
 }
 .info{
     font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .prisBox{
@@ -226,8 +252,10 @@ h3{
     margin-top: 5em;
 }
 .priser{
+    
     font-size: xx-large;
     width: 10em;
+    text-align: center;
 }
 .Bestil{
     font-size: larger;
@@ -238,6 +266,8 @@ h3{
     margin-top: 2em;
     margin-bottom: 1em;
     transition: transform 0.3s ease;
+    border-radius: 1em;
+    margin-left: 2em;
 }
 .Bestil:hover{
     transform: scale(1.1);
@@ -331,6 +361,9 @@ form textarea {
     justify-content: space-between;
 }
 .kontorTekst{
+    display: flex;
+    align-items: center;
+    text-align: center;
     margin-left: 2em;
     width: 50%;
 }
@@ -350,6 +383,9 @@ form textarea {
 
 }
 .tekst-gutterne{
+    display: flex;
+    align-items: center;
+    text-align: center;
     margin-left: 2em;
     width: 50%;
     
@@ -370,7 +406,9 @@ form textarea {
     display: flex;
     align-items: center;
 }
-
+.godkendelse p{
+    margin-left: 1em;
+}
 
 
 
@@ -527,6 +565,7 @@ sammarbejdsfirma
     margin-top: 4em;
     background-color: white;
     border-bottom: solid green;
+    text-align: center;
 }
 #tekstFrontTo{
     display: flex;
@@ -585,16 +624,79 @@ sammarbejdsfirma
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    margin-left: 2em;
     margin-top: 2em;
+}
+#facade1 p {
+    margin-left: 2em;
 }
 #facade1 img{
     height: 15em;
 }
 .sådan{
+    margin-top: 2em;
+    gap: 2em;
     display: flex;
     justify-content: space-evenly;
+    
 }
 .sådan h2{
+    text-align: center;
     border-bottom: solid green;
+    background-color: white;
+    width: 50%;
+}
+.sådanTekst{
+    background-color: white;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+.sådanTekst h6{
+    display: flex;
+    justify-content: center;
+    color: green;
+    font-size: x-large;
+}
+.derfor {
+    width: 50%;
+    margin-top: 4em;
+    background-color: white;
+    float: left;
+}
+
+.spørgsmål {
+    margin-top: 12em;
+    background-color: white;
+    width: 40%;
+    margin-left: 9%;
+    float: left;
+    border: solid black;
+}
+.spørgsmål p{
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+.derfor h3{
+    border-bottom: solid green;
+}
+.derfor h2{
+    color: gray;
+}
+.derfor p{
+    margin-top: 2em;
+    margin-left: 2em;
+}
+#kontaktButton{
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#kontaktButton a button{
+    margin-left: 2em;
+    margin-right: 2em;
+    width: 10em;
+    background-color: black;
+    color: white;
 }

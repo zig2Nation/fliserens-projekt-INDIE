@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bedømmelser</title>
+    <link rel="stylesheet" href="bedømmelse.css">
+    <script defer src="bedømmelse.js"></script>
+    <script src=""></script>
+</head>
+<header>
+    <h1>L/S Fliserens</h1>
+    <nav>
+        <li>
+            <ul>
+                <div class="logoContainer">
+                <li class="dropdown">
+                    <img id="menuIcon" class="menu" src="../sort.png" alt="">
+                    <div class="dropdown-content">
+                        <ul><a href="../sammarbejde/sammarbejde.html"><h3>smarbejde</h3></a>
+                            <a href="../facaderens/facaderens .html"><h3>facaderens</h3></a>
+                            <h3>Bedømmelser</h3>
+                        </ul>
+                    </div>
+                </li>
+                <a href="../index.html"><img class="logo" src="../dansk fliserens.png" alt=""></a>
+                </div>
+                <li><a href="../index.html">FORSIDE</a></li>
+
+                <li><a href="../fliserens/fliserens.html">FLISERENS</a></li>
+
+                <li><a href="../salg/salg.html">SALG</a></li>
+
+                <li><a href="../tilbud/tilbud.html">HENT TILBUD</a></li>
+
+                <li><a href="../kontakt/kontakt.html">KONTAKT/OM OS</a></li>
+
+                <div class="indkøbsvogn">
+                    <a href="../indkøbskurv/indkøbskurv.html"><img id="cartIcon" src="../icons8-shopping-cart-24.png" alt=""></a>
+                    <span id="cartCount">0</span>
+                </div>
+            </ul>
+        </li>
+    </nav>
+</header>
+<body>
+    <main>
+        <h2>Giv os en vudering af vores arbejde hos jer og vores kundeservice</h2>
+        <div id="tekstBesked">
+            <p>Her kan du give din vudering af firmaet og den service du har fået af vores kollegaer. Skriv en besked i tekst boxen om din vudering. Giv endelig gerne den mængde stjerner som du føler passer til den yddelse du fik, det er helt gratis og ufropligtigt at giv en besked og stjerner </p>
+        <form class="beskeder" novalidate>
+                <label>
+                    <p>Skriv din besked her</p>
+                    <textarea name="message" required minlength="15" maxlength="255"></textarea>
+                    <span class="statusMessage"></span>
+                </label>
+                <div class="rating">
+                    <span class="star" onclick="rate(1)" onmouseover="highlightStars(1)" onmouseout="resetStars()">&#9733;</span>
+                    <span class="star" onclick="rate(2)" onmouseover="highlightStars(2)" onmouseout="resetStars()">&#9733;</span>
+                    <span class="star" onclick="rate(3)" onmouseover="highlightStars(3)" onmouseout="resetStars()">&#9733;</span>
+                    <span class="star" onclick="rate(4)" onmouseover="highlightStars(4)" onmouseout="resetStars()">&#9733;</span>
+                    <span class="star" onclick="rate(5)" onmouseover="highlightStars(5)" onmouseout="resetStars()">&#9733;</span>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <div id="pilContainer">
+            <img src="til højre.png" alt="" class="tilHøjrePil">
+            <img src="til højre.png" alt="" class="tilVenstrePil">
+        </div>
+        <div id="tekstSlide">
+        
+        </div>
+    </main>
+</body>
+<footer>
+    <h4>Direktør: Lasse</h4>
+    <h4>Email: lasse_strom@outlook.dk</h4>
+    <h4>Cvr: 1234</h4>
+    <h4>Nummer: 71704751</h4>
+</footer>
+</html>

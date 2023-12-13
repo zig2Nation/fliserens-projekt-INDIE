@@ -123,9 +123,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
 let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
+console.log(kurv);
 const indkøbsProdukterContainer = document.getElementById("indkøbsProdukter");
 const samletPrisContainer = document.getElementById("samletPris");
-
 
 
 
@@ -142,11 +142,10 @@ function visIndkøbsProdukter() {
   indkøbsProdukterContainer.innerHTML = "";
   let samletPris = 0;
 
-  // Opret et objekt til at holde styr på antallet af hvert produkt
   const produktMængder = {};
 
   kurv.forEach((product) => {
-    // Brug produktets index som nøgle
+    
     const key = products.findIndex((p) => p.description === product.description);
 
     if (produktMængder[key] !== undefined) {
@@ -160,17 +159,8 @@ function visIndkøbsProdukter() {
       };
     }
 
-    samletPris += product.price;
+    samletPris += product.price * product.quantity;
   });
-
-
-
-
-
-
-
-
-
 
   // Gennemgå produktMængder for at opdatere indkøbskurven
   for (const key in produktMængder) {
@@ -198,7 +188,6 @@ function visIndkøbsProdukter() {
     increaseQuantityButton.textContent = "+";
     increaseQuantityButton.addEventListener("click", () => {
       justerMængde(product.description, 1);
-      visIndkøbsProdukter(); // Opdater visningen efter ændring i mængden
     });
 
     // Tilføj knap til at formindske mængden (ekstra funktionalitet)
@@ -206,7 +195,6 @@ function visIndkøbsProdukter() {
     decreaseQuantityButton.textContent = "-";
     decreaseQuantityButton.addEventListener("click", () => {
       justerMængde(product.description, -1);
-      visIndkøbsProdukter(); // Opdater visningen efter ændring i mængden
     });
 
     const imageElement = document.createElement("img");
@@ -224,12 +212,10 @@ function visIndkøbsProdukter() {
     indkøbsProdukterContainer.appendChild(indkøbsProduktElement);
   }
 
-  samletPrisContainer.innerHTML = `<p>Samlet pris: ${samletPris}kr</p>`;
+  samletPrisContainer.innerHTML = `<p>Samlet pris: ${samletPris}kr`;
 }
 
-// Initial visning af indkøbsprodukter
 visIndkøbsProdukter();
-
 
 /**
  * 
@@ -238,30 +224,47 @@ visIndkøbsProdukter();
  * @description tal i kurv
  */
 function justerMængde(description, ændring) {
-  // Hent kurv fra localStorage
   let kurv = JSON.parse(localStorage.getItem("kurv")) || [];
-
-  // Find det produkt, der skal justeres i mængde
   const produktIndex = kurv.findIndex((product) => product.description === description);
 
   if (produktIndex !== -1) {
-    // Opdater mængden
+    kurv[produktIndex].quantity = kurv[produktIndex].quantity || 0;
     kurv[produktIndex].quantity += ændring;
 
-    // Hvis mængden er nul eller negativ, fjern produktet fra kurven
     if (kurv[produktIndex].quantity <= 0) {
       kurv.splice(produktIndex, 1);
     }
 
-    // Opdater localStorage med den opdaterede kurv
     localStorage.setItem("kurv", JSON.stringify(kurv));
-
-    // Opdater kurvCount
     opdaterKurvCount();
-
-    // Opdater visningen af indkøbskurven med det samme
     visIndkøbsProdukter();
+
+    const cartCountElement = document.getElementById("cartCount");
+    cartCountElement.textContent = kurv.length.toString();
+
+    opdaterSamletPris();
+    console.log("Mængde justeret for produkt:", description);
+    console.log("Ny mængde:", kurv[produktIndex].quantity);
+    console.log("Opdateret kurv:", kurv);
+  } else {
+    console.log("Produktet blev ikke fundet i kurven:", description);
   }
+}
+
+/**
+ * Opdater den samlede pris og visningen.
+ */
+function opdaterSamletPris() {
+  let samletPris = 0;
+
+  kurv.forEach((item) => {
+    console.log(item.quantity)
+    const product = products.find((p) => p.description === item.description);
+    samletPris += product.price * item.quantity;
+  });
+
+  // Opdater visningen af den samlede pris
+  samletPrisContainer.innerHTML = `<p>Samlet pris: ${samletPris}kr`;
 }
 
 
